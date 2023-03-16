@@ -46,7 +46,100 @@ void main() {
    */
   List<String> blackPinkList = ['리사','지수','제니','로제'];
   print('KEG blackPinkList : '+ blackPinkList.toString());
-  print('KEG blackPinkList[0] : '+ blackPinkList[0])
+  print('KEG blackPinkList[0] : '+ blackPinkList[0]);
+  print('KEG blackPinkList.length : '+ blackPinkList.length.toString());
+  blackPinkList[3] = '코드팩토리';
+  print('KEG blackPinkList : '+ blackPinkList.toString());
+
+  /*
+    where() 함수
+    List에 있는 값들을 순서대로 순화 하면서 특정 조건에 맞는 값만 필터링.
+   */
+
+  final newList = blackPinkList.where((name) => name == '리사' || name == '지수',);
+  print("KEG where()" + newList.toString());
+
+  /*
+    map() 함수
+    List에 있는 값들을 순서대로 순회하면서 값을 변경
+   */
+
+  final newBlackPink = blackPinkList.map((name) => '블랙핑크 $name',);
+  print('KEG map() : ' +newBlackPink.toString());
+
+  /*
+    null 관련
+    변수타입이 null값을 가지는지 여부를 지정해야한다.
+    타입 뒤에 ?를 추가해야 null값이 저장 될 수 있다.
+   */
+
+  double? number;
+  print('KEG null op: ' +number.toString());
+
+  number ??= 3; // ??를 사용하면 기존 값이 null 일 때만 저장된다.
+  print('KEG ?? op : '+ number.toString());
+  number ??= 4; // null이 아니므로 3이 유지된다.
+  print('KEG after ?? op : ' + number.toString());
+
+
+  /*
+    타입 비교 연산자
+    is 키워드를 사용.
+   */
+
+  double castNum = 1;
+  print('KEG castNum is int ? : '+ (castNum is int).toString());
+  // print('KEG castNum is int ? : '+ castNum is int); 에서 castNum을 toString 하지 않으면 에러발생.
+  print('KEG castNum is String ? : '+ castNum.toString() is String);
+  print('KEG cast is! int ? : '+ castNum.toString() is! int);
+
+  /*
+    함수
+    required 키워드 : 파라미터가 null 값이 불가능한 타입이면 기본값을 지정해주거나 필수로 입력해야한다.
+    기본값을 가지는 포지셔널 파라미터는 [] 기호를 사용.
+   */
+
+  //required
+  print(addTwoNumbers(a: 1, b: 2));
+  print(adddTwoNumbers(1));
+  print(addddTwoNumbers(2, b: 4));
+
+  /*
+     익명 / 람다 함수
+     함수의 이름이 없고 1회성으로 사용.
+   */
+
+  List<int> funNum = [1,2,3,4,5];
+  final allMembers = funNum.reduce((value, element){
+    return value + element;
+  });
+
+  print(allMembers);
+
+  // 람다 함수로 모든 값 더하기
+  final allMembersRam = funNum.reduce((value,element) => value + element);
+  print(allMembersRam);
+}
+
+// 매개변수를 필수로 입력해야 한다는 뜻.
+int addTwoNumbers({
+  required int a,
+  required int b,
+}) {
+  return a+b;
+}
+
+//기본값을 가지는 파라미터
+int adddTwoNumbers(int a, [int b = 2]) {
+  return a+b;
+}
+
+// 포지셔널 파라미터와 네임드 파라미터를 섞어서 사용가능. 섞어 쓸 때는 포지셔널 파라미터가 반드시 위에 위치 해야한다.
+int addddTwoNumbers(int a, {
+  required int b,
+  int c = 4,
+}) {
+  return a+b+c;
 }
 
 class MyApp extends StatelessWidget {
