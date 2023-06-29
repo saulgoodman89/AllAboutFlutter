@@ -1,3 +1,4 @@
+import 'package:allaboutflutter/Idol.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -119,6 +120,16 @@ void main() {
   // 람다 함수로 모든 값 더하기
   final allMembersRam = funNum.reduce((value,element) => value + element);
   print(allMembersRam);
+
+  Idol blackPink = Idol("지수");
+ // blackPink.sayName();
+
+  // Named Parameter , Named Constructor 확인 필요
+
+  //private 다트 언어에서는 같은 파일에서만 접근이 가능함을 의미
+  Idol bts = Idol('bts');
+ // print(bts._name); private 이라 에러 발생
+  
 }
 
 // 매개변수를 필수로 입력해야 한다는 뜻.
