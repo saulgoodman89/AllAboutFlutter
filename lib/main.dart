@@ -2,7 +2,7 @@ import 'package:allaboutflutter/Idol.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(PaddingWidgetEx());
   print('KEG hello world');
 
   /*
@@ -129,7 +129,8 @@ void main() {
   //private 다트 언어에서는 같은 파일에서만 접근이 가능함을 의미
   Idol bts = Idol('bts');
  // print(bts._name); private 이라 에러 발생
-  
+
+  ContainerEx();
 }
 
 // 매개변수를 필수로 입력해야 한다는 뜻.
@@ -151,6 +152,78 @@ int addddTwoNumbers(int a, {
   int c = 4,
 }) {
   return a+b+c;
+}
+class PaddingWidgetEx extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Container(
+        color: Colors.blue,
+        child: Padding(
+          padding: EdgeInsets.all(
+            100.0,
+          ),
+           child: Container(
+             color:Colors.red,
+             width: 50.0,
+             height: 50.0,)
+          ),
+        ),
+      );
+  }
+}
+class SizedBoxEx extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home : SizedBox(
+        height: 200.0,
+        width: 200.0,
+        child:Container(
+          color: Colors.red,
+        )
+      )
+    );
+  }
+}
+
+class ContainerEx extends StatelessWidget {
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      home: Container(
+              decoration: BoxDecoration(
+                color: Colors.red,
+                border: Border.all(
+                  width:50.0,
+                  color:Colors.black,
+                ),
+                borderRadius: BorderRadius.circular(15.0
+                ),
+              ),
+              height:199.0,
+              width: 99.0
+          )
+      );
+  }
+}
+
+class FloatingActionButtonEx extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home : Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            print('KEG onPressed FloatingActionBtn');
+          },
+          child: Text('클릭'),
+
+        ),
+        body: Container(),
+      )
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
