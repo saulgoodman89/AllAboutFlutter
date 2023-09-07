@@ -2,7 +2,7 @@ import 'package:allaboutflutter/Idol.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(PaddingWidgetEx());
+  runApp(SplashScreen());
   print('KEG hello world');
 
   /*
@@ -130,7 +130,7 @@ void main() {
   Idol bts = Idol('bts');
  // print(bts._name); private 이라 에러 발생
 
-  ContainerEx();
+ // ContainerEx();
 }
 
 // 매개변수를 필수로 입력해야 한다는 뜻.
@@ -153,6 +153,111 @@ int addddTwoNumbers(int a, {
 }) {
   return a+b+c;
 }
+
+class SplashScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home:Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            color:Colors.orange,
+          ),
+
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children:[
+              Image.asset('assets/logo.png',),
+              CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation(
+                  Colors.white,
+                )
+              )
+            ],
+          )
+        )
+      ),
+    );
+  }
+}
+
+class ColumnWidgetExample extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: SizedBox(
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+
+            crossAxisAlignment: CrossAxisAlignment.center,
+
+            children: [
+              Container(
+                height: 50.0,
+                width:50.0,
+                color: Colors.red,
+              ),
+
+              const SizedBox(width: 12.0),
+              Container(
+                height:50.0,
+                width: 50.0,
+                color:Colors.green,
+              ),
+              const SizedBox(width: 12.0),
+              Container(
+                height:50.0,
+                width:50.0,
+                color:Colors.blue,
+              )
+            ],
+          )
+        )
+      )
+    );
+  }
+}
+
+class RowWidgetExample extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: SizedBox(
+          height: double.infinity,
+          child:Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+
+            children: [
+              Container(
+                height:50.0,
+                width:50.0,
+                color:Colors.red
+              ),
+
+              const SizedBox(width: 12.0),
+              Container(
+                height:50.5,
+                width:50.0,
+                color:Colors.green,
+              ),
+              const SizedBox(width: 22.0),
+              Container(
+                height: 50.0,
+                width: 50.0,
+                color:Colors.blue,
+              )
+            ],
+          )
+        )
+      )
+    );
+  }
+}
+
 class PaddingWidgetEx extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
