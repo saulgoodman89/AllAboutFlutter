@@ -1,8 +1,10 @@
+import 'package:allaboutflutter/HomeScreen.dart';
 import 'package:allaboutflutter/Idol.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(SplashScreen());
+  HomeScreen homeScreen = HomeScreen();
+  runApp(HomeScreen());
   print('KEG hello world');
 
   /*
@@ -153,6 +155,7 @@ int addddTwoNumbers(int a, {
 }) {
   return a+b+c;
 }
+
 
 class SplashScreen extends StatelessWidget {
   @override
