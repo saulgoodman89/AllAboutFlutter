@@ -1,10 +1,15 @@
-import 'package:allaboutflutter/HomeScreen.dart';
+import 'package:allaboutflutter/screen/HomeScreen.dart';
 import 'package:allaboutflutter/Idol.dart';
+import 'package:allaboutflutter/screen/pageview.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   HomeScreen homeScreen = HomeScreen();
-  runApp(HomeScreen());
+  runApp(
+    MaterialApp(
+      home: pageview(),
+    )
+  );
   print('KEG hello world');
 
   /*
