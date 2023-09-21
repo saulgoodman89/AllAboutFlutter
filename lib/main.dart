@@ -1,3 +1,4 @@
+import 'package:allaboutflutter/screen/CoupleHomeScreen.dart';
 import 'package:allaboutflutter/screen/HomeScreen.dart';
 import 'package:allaboutflutter/Idol.dart';
 import 'package:allaboutflutter/screen/pageview.dart';
@@ -7,7 +8,7 @@ void main() {
   HomeScreen homeScreen = HomeScreen();
   runApp(
     MaterialApp(
-      home: pageview(),
+      home: CoupleHomeScreen(),
     )
   );
   print('KEG hello world');
