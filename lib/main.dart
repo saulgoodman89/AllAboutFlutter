@@ -11,6 +11,9 @@ void main() {
       home: CoupleHomeScreen(),
     )
   );
+
+  debugPrint('KEG Accept Log');
+
   print('KEG hello world');
 
   /*

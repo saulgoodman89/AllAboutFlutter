@@ -1,27 +1,44 @@
 import 'package:flutter/material.dart';
 
-class CoupleHomeScreen extends StatelessWidget {
+class CoupleHomeScreen extends StatefulWidget {
   const CoupleHomeScreen({Key? key}) : super(key: key);
+
+
+  @override
+  State<CoupleHomeScreen> createState() => _CoupleHomeState();
+
+}
+
+class _CoupleHomeState extends State<CoupleHomeScreen> {
+  DateTime firstDay = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    print('KEG CoupleHomeState build');
     return Scaffold(
       backgroundColor: Colors.pink[100],
       body:SafeArea(
-        top: true,
+        top:true,
         bottom: false,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _DDay(),
+            _DDay(
+            onHeartPressed: onHeartPressed,),
             _CoupleImage(),
+
           ],
         )
       )
     );
   }
+
+  void onHeartPressed() {
+    print('Click');
+  }
+
 }
 
 class _CoupleImage extends StatelessWidget {
@@ -38,6 +55,11 @@ class _CoupleImage extends StatelessWidget {
 }
 
 class _DDay extends StatelessWidget{
+  final GestureTapCallback onHeartPressed;
+  _DDay({
+    required this.onHeartPressed,
+  });
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -57,7 +79,7 @@ class _DDay extends StatelessWidget{
           '2022.08.06'
         ),
         const SizedBox(height: 16.0),
-        IconButton(onPressed: () {}, icon: Icon(
+        IconButton(onPressed: onHeartPressed , icon: Icon(
           Icons.favorite,
           ),
         ),
