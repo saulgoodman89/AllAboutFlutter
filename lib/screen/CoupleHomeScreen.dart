@@ -26,7 +26,7 @@ class _CoupleHomeState extends State<CoupleHomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             _DDay(
-            onHeartPressed: onHeartPressed,),
+            onHeartPressed: onHeartPressed,firstDay: firstDay,),
             _CoupleImage(),
 
           ],
@@ -38,7 +38,6 @@ class _CoupleHomeState extends State<CoupleHomeScreen> {
   void onHeartPressed() {
     print('Click');
   }
-
 }
 
 class _CoupleImage extends StatelessWidget {
@@ -56,27 +55,35 @@ class _CoupleImage extends StatelessWidget {
 
 class _DDay extends StatelessWidget{
   final GestureTapCallback onHeartPressed;
+  final DateTime firstDay;
+
   _DDay({
-    required this.onHeartPressed,
+    required this.onHeartPressed,required this.firstDay,
   });
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final now = DateTime.now();
     // TODO: implement build
     return Column(
       children: [
         const SizedBox(height: 16.0),
-        Text('U&I'),
+        Text('U&I',
+            style: textTheme.headline1),
 
         const SizedBox(height:16.0),
         Text(
           '우리 처음 만난 날',
+          style: textTheme.bodyText1,
         ),
         Text(
-          '우리 처음 만난 날'
+          '우리 처음 만난 날',
+              style: textTheme.bodyText1,
         ),
         Text(
-          '2022.08.06'
+          'D+${DateTime(now.year, now.month,now.day).difference(firstDay).inDays+1}',
+          style: textTheme.headline2,
         ),
         const SizedBox(height: 16.0),
         IconButton(onPressed: onHeartPressed , icon: Icon(
