@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class CoupleHomeScreen extends StatefulWidget {
   const CoupleHomeScreen({Key? key}) : super(key: key);
@@ -36,7 +37,23 @@ class _CoupleHomeState extends State<CoupleHomeScreen> {
   }
 
   void onHeartPressed() {
-    print('Click');
+    showCupertinoDialog(context: context, builder : (BuildContext builder){
+      return Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          color: Colors.white,
+          height: 300,
+          child : CupertinoDatePicker(mode: CupertinoDatePickerMode.date,onDateTimeChanged: (DateTime date){
+            setState(() {
+              firstDay = date;
+            });
+          },
+        ),
+      ),
+      );
+    },
+    barrierDismissible: true,
+    );
   }
 }
 
@@ -74,12 +91,13 @@ class _DDay extends StatelessWidget{
 
         const SizedBox(height:16.0),
         Text(
+
           '우리 처음 만난 날',
           style: textTheme.bodyText1,
         ),
         Text(
-          '우리 처음 만난 날',
-              style: textTheme.bodyText1,
+          '${firstDay.year} . ${firstDay.month} . ${firstDay.day}',
+          style: textTheme.bodyText1,
         ),
         Text(
           'D+${DateTime(now.year, now.month,now.day).difference(firstDay).inDays+1}',
@@ -90,10 +108,6 @@ class _DDay extends StatelessWidget{
           Icons.favorite,
           ),
         ),
-        const SizedBox(height: 16.0),
-        Text(
-          'D+365',
-        )
       ],
     );
   }
